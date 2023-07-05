@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""Module to work with FileStorage class
+"""
+
+
 import json
 import os.path
 
@@ -14,7 +18,7 @@ class FileStorage:
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        FileStorage.__objects.update({key : obj.to_dict()})
+        FileStorage.__objects[key] = obj.to_dict()
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
