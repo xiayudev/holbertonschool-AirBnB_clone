@@ -4,17 +4,32 @@
 
 
 import uuid
+import json
 from datetime import datetime
 
 
 class BaseModel:
     """The base class for the airbnb project"""
 
-    def __init__(self):
-        """Constructor of the BaseModel class"""
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+    def __init__(self, *args, **kwargs):
+        """Constructor of the BaseModel class
+
+        Args:
+            *args (tuple): tuple of arguments
+            **kwargs (dict): dict of arguments
+
+        """
+        if kwargs:
+            for k, v in kwargs.items():
+                if k == '__class__':
+                    continue
+                if k == 'updated_at' or k == 'created_at':
+                    v = datetime.fromisoformat(v)
+                setattr(self, k, v)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """Return human readable string format"""
