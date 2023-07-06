@@ -20,11 +20,11 @@ class BaseModel:
             **kwargs (dict): dict of arguments
 
         """
-        if kwargs:
+        if len(kwargs) > 0:
             for k, v in kwargs.items():
                 if k == '__class__':
                     continue
-                if k == 'updated_at' or k == 'created_at':
+                elif k == 'updated_at' or k == 'created_at':
                     v = datetime.fromisoformat(v)
                 setattr(self, k, v)
         else:

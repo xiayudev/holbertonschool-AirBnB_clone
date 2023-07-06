@@ -5,6 +5,7 @@
 
 import json
 import os.path
+from typing import List
 
 
 class FileStorage:
@@ -13,21 +14,29 @@ class FileStorage:
 
     def all(self):
         """returns the dictionary __objects"""
-        return FileStorage.__objects
+        return self.__objects
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        FileStorage.__objects[key] = obj.to_dict()
+        self.__objects[key] = obj
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
-        with open(FileStorage.__file_path, 'w') as fe:
-            fe.write(json.dumps(FileStorage.__objects))
+        with open(self.__file_path, 'w') as fe:
+            dict_ = {k: v.to_dict() for k, v in self.__objects.items()}
+            fe.write(json.dumps(dict_))
 
     def reload(self):
-        """deserializes the JSON file to __objects
-        (only if the JSON file (__file_path) exists"""
-        if os.path.exists(FileStorage.__file_path):
-            with open(FileStorage.__file_path, 'r') as fe:
-                FileStorage.__objects = json.loads(fe.read())
+        """deserializes the JSON file to __objects (only if
+            the JSON file (__file_path) exists)
+        """
+        from models.base_model import BaseModel
+        if os.path.exists(self.__file_path):
+            with open(self.__file_path, 'r') as fe:
+                dict_ = json.loads(fe.read())
+            for k in dict_.keys():
+                value = dict_[k]
+                self.__objects[k] = eval(value['__class__'])(**value)
+        else:
+            pass
