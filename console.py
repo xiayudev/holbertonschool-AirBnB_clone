@@ -16,7 +16,8 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return False
-        elif arg.split()[0] not in ['BaseModel', 'User']:
+        elif arg.split()[0] not in ['BaseModel', 'User', 'Place', 'State',
+                                    'City', 'Amenity', 'Review']:
             print("** class doesn't exist **")
             return False
 
@@ -24,6 +25,16 @@ class HBNBCommand(cmd.Cmd):
             obj = eval(f"models.base_model.{arg}()")
         elif arg.split()[0] == 'User':
             obj = eval(f"models.user.{arg}()")
+        elif arg.split()[0] == 'Place':
+            obj = eval(f"models.place.{arg}()")
+        elif arg.split()[0] == 'State':
+            obj = eval(f"models.state.{arg}()")
+        elif arg.split()[0] == 'City':
+            obj = eval(f"models.city.{arg}()")
+        elif arg.split()[0] == 'Amenity':
+            obj = eval(f"models.amenity.{arg}()")
+        elif arg.split()[0] == 'Review':
+            obj = eval(f"models.review.{arg}()")
         obj.save()
         print(obj.id)
 
@@ -33,7 +44,8 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return False
-        elif values[0] not in ['BaseModel', 'User']:
+        elif values[0] not in ['BaseModel', 'User', 'Place', 'State',
+                               'City', 'Amenity', 'Review']:
             print("** class doesn't exist **")
             return False
         elif len(values) == 1:
@@ -54,7 +66,8 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return False
-        elif values[0] not in ['BaseModel', 'User']:
+        elif values[0] not in ['BaseModel', 'User', 'Place', 'State',
+                               'City', 'Amenity', 'Review']:
             print("** class doesn't exist **")
             return False
         elif len(values) == 1:
