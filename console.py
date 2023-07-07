@@ -17,6 +17,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return False
         elif arg.split()[0] != 'BaseModel':
+            print("** class doesn't exist **")
             return False
         obj = eval(f"models.base_model.{arg}()")
         obj.save()
@@ -86,10 +87,10 @@ class HBNBCommand(cmd.Cmd):
         updating attribute (save the change into the JSON file)
         """
         values = arg.split()
-        if not arg:
+        if not values:
             print("** class name missing **")
             return False
-        elif len(values) == 1:
+        if values[0]:
             flag = 0
             for v in models.storage.all().values():
                 if v.__class__.__name__ == values[0]:
@@ -98,10 +99,10 @@ class HBNBCommand(cmd.Cmd):
             if not flag:
                 print("** class doesn't exist **")
                 return False
-            else:
+            elif len(values) == 1:
                 print("** instance id missing **")
                 return False
-        elif len(values) == 2:
+        if values[1]:
             flag = 0
             for v in models.storage.all().values():
                 if v.id == values[1]:
@@ -110,17 +111,17 @@ class HBNBCommand(cmd.Cmd):
             if not flag:
                 print("** no instance found **")
                 return False
-            else:
+            elif len(values) == 2:
                 print("** attribute name missing **")
                 return False
-        elif len(values) == 3:
-            print("** value missing **")
-            return False
+        if values[2]:
+            if len(values) == 3:
+                print("** value missing **")
+                return False
         all_objs = models.storage.all()
         for v in all_objs.values():
             if v.id == values[1] and v.__class__.__name__ == values[0]:
                 setattr(v, values[2], values[3].strip('"'))
-                # models.storage.save()
                 break
 
     def do_quit(self, arg):
