@@ -76,7 +76,9 @@ class HBNBCommand(cmd.Cmd):
 
         all_objs = models.storage.all()
         for k, v in all_objs.items():
-            if v.id == values[1]:
+            if v.id == values[1] and k.split('.')[0] == values[0]:
+                print(k)
+                print(v)
                 all_objs.pop(k)
                 models.storage.save()
                 return False
