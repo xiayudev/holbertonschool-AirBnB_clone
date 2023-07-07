@@ -4,11 +4,124 @@
 
 
 import cmd
+import models
 
 
 class HBNBCommand(cmd.Cmd):
     """Command interpreter"""
     prompt = "(hbnb) "
+
+    def do_create(self, arg):
+        "Create a new instance of BaseModel"
+        if not arg:
+            print("** class name missing **")
+            return False
+        elif arg.split()[0] != 'BaseModel':
+            return False
+        obj = eval(f"models.base_model.{arg}()")
+        obj.save()
+        print(obj.id)
+
+    def do_show(self, arg):
+        "Prints the string representation of an instance"
+        values = arg.split()
+        if not arg:
+            print("** class name missing **")
+            return False
+        elif values[0] != 'BaseModel':
+            print("** class doesn't exist **")
+            return False
+        elif len(values) == 1:
+            print("** instance id missing **")
+            return False
+
+        all_objs = models.storage.all()
+        for obj in all_objs.values():
+            if obj.id == values[1]:
+                print(obj)
+                return False
+        else:
+            print("** no instance found **")
+
+    def do_destroy(self, arg):
+        "Deletes an instance based on the class name and id"
+        values = arg.split()
+        if not arg:
+            print("** class name missing **")
+            return False
+        elif values[0] != 'BaseModel':
+            print("** class doesn't exist **")
+            return False
+        elif len(values) == 1:
+            print("** instance id missing **")
+            return False
+
+        all_objs = models.storage.all()
+        for k, v in all_objs.items():
+            if v.id == values[1]:
+                all_objs.pop(k)
+                models.storage.save()
+                return False
+        else:
+            print("** no instance found **")
+
+    def do_all(self, arg):
+        "Prints all string representation of all instances"
+        values = arg.split()
+        if len(values) == 0:
+            list_ = [f"{v}" for v in models.storage.all().values()]
+            print(list_)
+        elif len(values) == 1:
+            list_ = [f"{v}"
+                     for v in models.storage.all().values()
+                     if v.__class__.__name__ == values[0]]
+            if not list_:
+                print("** class doesn't exist **")
+                return False
+            else:
+                print(list_)
+
+    def do_update(self, arg):
+        """Updates an instance based on the class name and id by adding or
+        updating attribute (save the change into the JSON file)
+        """
+        values = arg.split()
+        if not arg:
+            print("** class name missing **")
+            return False
+        elif len(values) == 1:
+            flag = 0
+            for v in models.storage.all().values():
+                if v.__class__.__name__ == values[0]:
+                    flag = 1
+                    break
+            if not flag:
+                print("** class doesn't exist **")
+                return False
+            else:
+                print("** instance id missing **")
+                return False
+        elif len(values) == 2:
+            flag = 0
+            for v in models.storage.all().values():
+                if v.id == values[1]:
+                    flag = 1
+                    break
+            if not flag:
+                print("** no instance found **")
+                return False
+            else:
+                print("** attribute name missing **")
+                return False
+        elif len(values) == 3:
+            print("** value missing **")
+            return False
+        all_objs = models.storage.all()
+        for v in all_objs.values():
+            if v.id == values[1] and v.__class__.__name__ == values[0]:
+                setattr(v, values[2], values[3].strip('"'))
+                # models.storage.save()
+                break
 
     def do_quit(self, arg):
         "Quit command to exit the program"
@@ -22,7 +135,7 @@ class HBNBCommand(cmd.Cmd):
 
     def postcmd(self, stop, line):
         """Execute after processing each command"""
-        if line == 'EOF':
+        if line == 'EOF' or line == 'quit':
             return True
         self.lastcmd = ""
 
