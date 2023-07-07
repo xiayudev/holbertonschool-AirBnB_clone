@@ -16,10 +16,14 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return False
-        elif arg.split()[0] != 'BaseModel':
+        elif arg.split()[0] not in ['BaseModel', 'User']:
             print("** class doesn't exist **")
             return False
-        obj = eval(f"models.base_model.{arg}()")
+
+        if arg.split()[0] == 'BaseModel':
+            obj = eval(f"models.base_model.{arg}()")
+        elif arg.split()[0] == 'User':
+            obj = eval(f"models.user.{arg}()")
         obj.save()
         print(obj.id)
 
@@ -29,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return False
-        elif values[0] != 'BaseModel':
+        elif values[0] not in ['BaseModel', 'User']:
             print("** class doesn't exist **")
             return False
         elif len(values) == 1:
@@ -50,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return False
-        elif values[0] != 'BaseModel':
+        elif values[0] not in ['BaseModel', 'User']:
             print("** class doesn't exist **")
             return False
         elif len(values) == 1:
