@@ -54,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
 
         all_objs = models.storage.all()
         for obj in all_objs.values():
-            if obj.id == values[1]:
+            if obj.id == values[1] and obj.__class__.__name__ == values[0]:
                 print(obj)
                 return False
         else:
