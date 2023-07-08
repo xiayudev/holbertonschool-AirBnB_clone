@@ -16,6 +16,11 @@ from models.review import Review
 class TestFileStorage(unittest.TestCase):
     """Testing for a File Storage class"""
 
+    def test_basic(self):
+        f1 = FileStorage()
+        f1._FileStorage__file_path = None
+        self.assertEqual(f1._FileStorage__file_path, None)
+
     def test_all(self):
         """Test for the all method"""
         self.assertEqual(type(models.storage.all()), dict)
@@ -38,7 +43,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn("Review." + r.id, models.storage.all().keys())
 
     def test_save(self):
-        pass
+        self.assertRaises(TypeError, models.storage.save, None)
 
     def test_reload(self):
         pass
