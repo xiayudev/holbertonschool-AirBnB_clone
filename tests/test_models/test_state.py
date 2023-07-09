@@ -35,3 +35,7 @@ class TestState(unittest.TestCase):
         result = style.check_files(['models/state.py',
                                     'tests/test_models/test_state.py'])
         self.assertEqual(result.total_errors, 0, "Found errors")
+
+
+if __name__ == '__main__':
+    unittest.main()

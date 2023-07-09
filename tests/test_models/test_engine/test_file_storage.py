@@ -84,3 +84,7 @@ class TestFileStorage(unittest.TestCase):
         style = pycodestyle.StyleGuide(quiet=True)
         result = style.check_files([stg])
         self.assertEqual(result.total_errors, 0, "Found errors")
+
+
+if __name__ == '__main__':
+    unittest.main()

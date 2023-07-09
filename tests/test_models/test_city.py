@@ -35,3 +35,7 @@ class TestCity(unittest.TestCase):
         result = style.check_files(['models/city.py',
                                     'tests/test_models/test_city.py'])
         self.assertEqual(result.total_errors, 0, "Found errors")
+
+
+if __name__ == '__main__':
+    unittest.main()
