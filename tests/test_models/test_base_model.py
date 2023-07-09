@@ -54,7 +54,7 @@ class TestBaseModel(unittest.TestCase):
         b4_update = b4.updated_at
         b4.save()
         self.assertNotEqual(b4_update, b4.updated_at)
-        self.assertTrue(os.path.exists('file.json'))
+        self.assertEqual(True, os.path.exists('file.json'))
 
     def test_to_dict(self):
         """Test for the to_dict method"""
