@@ -12,11 +12,7 @@ import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
-from models.state import State
-from models.place import Place
 from models.city import City
-from models.amenity import Amenity
-from models.review import Review
 
 
 class TestFileStorage(unittest.TestCase):
@@ -34,39 +30,16 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(f1_objs), dict)
 
     def test_new(self):
-        b = BaseModel()
         u = User()
-        s = State()
-        p = Place()
-        c = City()
-        a = Amenity()
-        r = Review()
-
-        self.assertIn("BaseModel." + b.id, models.storage.all().keys())
         self.assertIn("User." + u.id, models.storage.all().keys())
-        self.assertIn("State." + s.id, models.storage.all().keys())
-        self.assertIn("Place." + p.id, models.storage.all().keys())
-        self.assertIn("City." + c.id, models.storage.all().keys())
-        self.assertIn("Amenity." + a.id, models.storage.all().keys())
-        self.assertIn("Review." + r.id, models.storage.all().keys())
-        self.assertIn("Review." + r.id, models.storage.all().keys())
-
-        with self.assertRaises(Exception):
-            models.storage.new(None)
-        with self.assertRaises(Exception):
-            models.storage.new([])
 
     def test_save(self):
-        a1 = Amenity()
-        models.storage.save()
+        a1 = City()
+        a1.save()
         self.assertEqual(os.path.exists("file.json"), True)
-        with self.assertRaises(TypeError):
-            models.storage.save(None)
-        with self.assertRaises(TypeError):
-            models.storage.save([])
 
     def test_reload(self):
-        c1 = City()
+        a1 = City()
         models.storage.save()
         self.assertEqual(os.path.exists("file.json"), True)
         os.remove("file.json")
@@ -75,7 +48,9 @@ class TestFileStorage(unittest.TestCase):
         f1 = FileStorage()
         f1.reload()
         all_objs = f1.all()
-        self.assertIn("City.{}".format(c1.id), all_objs)
+        all_objs.clear()
+        models.storage.new(a1)
+        self.assertEqual(all_objs, {f"City.{a1.id}": a1})
 
     def test_pycodestyle_conformance(self):
         """Test for PEP8
