@@ -108,6 +108,16 @@ class TestFileStorage(unittest.TestCase):
         """Tests the function reload with an argument"""
         self.assertRaises(TypeError, models.storage.reload, None)
 
+    def test_reload_type(self):
+        base = BaseModel()
+        base.name = 'Josh'
+        base.save()
+        models.storage.reload()
+        models.storage.all()
+        self.assertTrue(models.storage.all(), 'Josh')
+        self.assertTrue(hasattr(base, 'save'))
+        self.assertNotEqual(base.created_at, base.updated_at)
+
     def test_reload(self):
         """Tests the function reload"""
 
