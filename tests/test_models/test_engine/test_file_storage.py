@@ -17,9 +17,10 @@ class TestFileStorage(unittest.TestCase):
     """Testing for a File Storage class"""
 
     def test_basic(self):
-        f1 = FileStorage()
-        f1._FileStorage__file_path = None
-        self.assertEqual(f1._FileStorage__file_path, None)
+        self.assertNotEqual(FileStorage._FileStorage__file_path, None)
+        self.assertEqual(type(FileStorage._FileStorage__file_path), str)
+        self.assertEqual(type(FileStorage._FileStorage__objects), dict)
+        self.assertEqual(type(models.storage), FileStorage)
 
     def test_all(self):
         """Test for the all method"""
@@ -46,4 +47,30 @@ class TestFileStorage(unittest.TestCase):
         self.assertRaises(TypeError, models.storage.save, None)
 
     def test_reload(self):
-        pass
+        b = BaseModel()
+        u = User()
+        s = State()
+        p = Place()
+        c = City()
+        a = Amenity()
+        r = Review()
+
+        models.storage.new(b)
+        models.storage.new(u)
+        models.storage.new(s)
+        models.storage.new(p)
+        models.storage.new(c)
+        models.storage.new(a)
+        models.storage.new(r)
+        models.storage.save()
+        models.storage.reload()
+
+        OBJ = FileStorage._FileStorage__objects
+
+        self.assertIn("BaseModel." + b.id, OBJ)
+        self.assertIn("User." + u.id, OBJ)
+        self.assertIn("State." + s.id, OBJ)
+        self.assertIn("Place." + p.id, OBJ)
+        self.assertIn("City." + c.id, OBJ)
+        self.assertIn("Amenity." + a.id, OBJ)
+        self.assertIn("Review." + r.id, OBJ)
