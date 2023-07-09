@@ -4,7 +4,7 @@ the File Storage
 class
 """
 
-import console
+import pycodestyle
 import models
 import unittest
 from models.engine.file_storage import FileStorage
@@ -121,6 +121,9 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn("Amenity." + self.a.id, objc)
         self.assertIn("Review." + self.r.id, objc)
 
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_pycodestyle_conformance(self):
+        """Test for PEP8."""
+        stg = 'tests/test_models/test_engine/test_file_storage.py'
+        style = pycodestyle.StyleGuide(quiet=True)
+        result = style.check_files([stg])
+        self.assertEqual(result.total_errors, 0, "Found errors")
