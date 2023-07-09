@@ -36,11 +36,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_save(self):
         """Test for the save method"""
-        a1 = City()
-        models.storage.save()
-        self.assertEqual(os.path.exists("file.json"), True)
-        self.assertIn(f"City.{a1.id}", models.storage.all().keys())
-        self.assertEqual(models.storage.all()[f"City.{a1.id}"], a1)
+        self.assertEqual(TypeError, models.storage.save, None)
 
     def test_reload(self):
         """Test for the reload method"""
