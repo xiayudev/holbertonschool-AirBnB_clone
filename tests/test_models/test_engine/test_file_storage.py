@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Unittest for the File Storage class
+"""Unittest for
+the File Storage
+class
 """
 
 import models
@@ -28,6 +30,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(models.storage.all()), dict)
 
     def test_new(self):
+        """Tests the function new"""
         b = BaseModel()
         u = User()
         s = State()
@@ -45,9 +48,11 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn("Review." + r.id, models.storage.all().keys())
 
     def test_save_argument(self):
+        """Tests the function save with an argument"""
         self.assertRaises(TypeError, models.storage.save, None)
 
     def test_save(self):
+        """Tests the function save"""
         b = BaseModel()
         u = User()
         s = State()
@@ -76,9 +81,11 @@ class TestFileStorage(unittest.TestCase):
             self.assertIn("Review." + r.id, j_text)
 
     def test_reload_argument(self):
+        """Tests the function reload with an argument"""
         self.assertRaises(TypeError, models.storage.reload, None)
 
     def test_reload(self):
+        """Tests the function reload"""
         b = BaseModel()
         u = User()
         s = State()
