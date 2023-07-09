@@ -20,7 +20,7 @@ class TestFileStorage(unittest.TestCase):
     """Testing for a File Storage class"""
 
     def test_basic(self):
-        self.assertNotEqual(FileStorage._FileStorage__file_path, None)
+        # self.assertNotEqual(FileStorage._FileStorage__file_path, None)
         self.assertEqual(type(FileStorage._FileStorage__file_path), str)
         self.assertEqual(type(FileStorage._FileStorage__objects), dict)
         self.assertEqual(type(models.storage), FileStorage)
