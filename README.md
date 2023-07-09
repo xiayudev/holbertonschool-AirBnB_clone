@@ -32,7 +32,23 @@ This Python's module is a testing framework that allows us to write test cases. 
 + Examples of using unittest module
 
 ### *args and **kwargs
-+ Examples (add images here)
+*args is used to pass a variable number of positional arguments to a function. The passed arguments are collected in a tuple inside the function.
+```
+def function(*args):
+    for arg in args:
+        print(arg)
+
+function(1, 2, 3, 4)
+```
+
+**kwargs is used to pass a variable number of keyword arguments to a function. The passed arguments are collected in a dictionary inside the function.
+```
+def function(**kwargs):
+    for key, value in kwargs.items():
+        print(key, value)
+
+function(name="John", age=30)
+```
 ### packages
 In Python, a package is a special folder or directory that contains related modules and the __init__.py file that indicates that the folder is a package, and initializes and defines the behavior of the package.
 ```
@@ -71,9 +87,34 @@ class Console(cmd.Cmd):
 Console().cmdloop()
 ```
 ### circular import
-+ Examples
+Circular import occurs when two or more modules import each other, creating a circular dependency. This will raise an exception called `ImportError`.
+```
+# module_a.py
+
+from module_b import b
+
+a = 'a'
+a = b
+
+# module_b.py
+
+from module_a import a
+
+b = 'b'
+```
 ### modules
-+ Examples
+In Python, a module is a file that contains reusable Python code (classes, functions, variables).
+```
+/* Import math module*/
+
+import math
+result = math.sqrt(25)
+
+/*or*/
+
+from math import sqrt
+resultado = sqrt(25)
+```
 
 ## Installation
 + The first step to get this repo is cloning it:
