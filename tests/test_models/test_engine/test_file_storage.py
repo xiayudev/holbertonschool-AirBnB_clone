@@ -79,11 +79,14 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn("Review." + self.r.id, models.storage.all().keys())
 
     def test_save_argument(self):
-        """Tests the function save with an argument"""
-        self.assertRaises(TypeError, models.storage.save, None)
+        """Tests the function save with an argument
+        """
+        with self.assertRaises(TypeError):
+            models.storage.save(None)
 
     def test_save(self):
-        """Tests the function save"""
+        """Tests the function save
+        """
 
         models.storage.new(self.b)
         models.storage.new(self.u)
@@ -105,10 +108,12 @@ class TestFileStorage(unittest.TestCase):
             self.assertIn("Review." + self.r.id, j_text)
 
     def test_reload_argument(self):
-        """Tests the function reload with an argument"""
-        self.assertRaises(TypeError, models.storage.reload, None)
+        """Tests the function reload with an argument
+        """
+        with self.assertRaises(TypeError):
+            models.storage.reload(None)
 
-    def test_reload_type(self):
+    def test_save_base(self):
         base = BaseModel()
         base.name = 'Josh'
         base.save()
@@ -119,7 +124,8 @@ class TestFileStorage(unittest.TestCase):
         self.assertNotEqual(base.created_at, base.updated_at)
 
     def test_reload(self):
-        """Tests the function reload"""
+        """Tests the function reload
+        """
 
         models.storage.new(self.b)
         models.storage.new(self.u)
@@ -142,7 +148,8 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn("Review." + self.r.id, objc)
 
     def test_pycodestyle_conformance(self):
-        """Test for PEP8."""
+        """Test for PEP8
+        """
         stg = 'tests/test_models/test_engine/test_file_storage.py'
         style = pycodestyle.StyleGuide(quiet=True)
         result = style.check_files([stg])
