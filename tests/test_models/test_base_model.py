@@ -42,19 +42,19 @@ class TestBaseModel(unittest.TestCase):
 
     def test_str(self):
         """Test for the __str__ method"""
-        b1 = BaseModel()
-        rst = f"[BaseModel] ({b1.id}) {b1.__dict__}\n"
+        b3 = BaseModel()
+        rst = f"[BaseModel] ({b3.id}) {b3.__dict__}\n"
         with mock.patch("sys.stdout", new=io.StringIO()) as fake:
-            print(b1)
+            print(b3)
         assert fake.getvalue() == rst
 
     def test_save(self):
         """Test for the save method"""
-        b1 = BaseModel()
-        b1_update = b1.updated_at
-        b1.save()
-        self.assertNotEqual(b1_update, b1.updated_at)
-        self.assertEqual(True, os.path.exists('file.json'))
+        b4 = BaseModel()
+        b4_update = b4.updated_at
+        b4.save()
+        self.assertNotEqual(b4_update, b4.updated_at)
+        self.assertTrue(os.path.exists('file.json'))
 
     def test_to_dict(self):
         """Test for the to_dict method"""
