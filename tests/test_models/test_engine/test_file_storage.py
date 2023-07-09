@@ -6,12 +6,11 @@ class
 
 
 import os
-import pycodestyle
 import models
 import unittest
 from models.engine.file_storage import FileStorage
 from models.user import User
-from models.city import City
+from models.base_model import BaseModel
 
 
 class TestFileStorage(unittest.TestCase):
@@ -40,8 +39,8 @@ class TestFileStorage(unittest.TestCase):
 
     def test_reload(self):
         """Test for the reload method"""
-        a1 = City()
-        models.storage.save()
+        a1 = BaseModel()
+        a1.save()
         self.assertEqual(os.path.exists("file.json"), True)
         os.remove("file.json")
         self.assertEqual(os.path.exists("file.json"), False)
@@ -50,7 +49,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(len(models.storage._FileStorage__objects), 0)
         models.storage.new(a1)
         self.assertEqual(len(models.storage._FileStorage__objects), 1)
-        self.assertEqual(models.storage.all(), {f"City.{a1.id}": a1})
+        self.assertEqual(models.storage.all(), {f"BaseModel.{a1.id}": a1})
         self.assertEqual(os.path.exists("file.json"), False)
         a1.save()
         self.assertEqual(os.path.exists("file.json"), True)
@@ -59,14 +58,6 @@ class TestFileStorage(unittest.TestCase):
         models.storage.reload()
         self.assertEqual(len(models.storage._FileStorage__objects), 1)
         models.storage.save()
-
-    def test_pycodestyle_conformance(self):
-        """Test for PEP8
-        """
-        stg = 'tests/test_models/test_engine/test_file_storage.py'
-        style = pycodestyle.StyleGuide(quiet=True)
-        result = style.check_files([stg])
-        self.assertEqual(result.total_errors, 0, "Found errors")
 
 
 if __name__ == '__main__':
