@@ -19,6 +19,7 @@ class TestFileStorage(unittest.TestCase):
     """Testing for a File Storage class"""
 
     def test_init(self):
+        """Test for the instantiation"""
         f1 = FileStorage()
         self.assertIsNotNone(f1._FileStorage__file_path)
         self.assertEqual(f1._FileStorage__file_path, "file.json")
@@ -30,27 +31,39 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(f1_objs), dict)
 
     def test_new(self):
+        """Test for the new method"""
         u = User()
         self.assertIn("User." + u.id, models.storage.all().keys())
 
     def test_save(self):
+        """Test for the save method"""
         a1 = City()
-        a1.save()
+        models.storage.save()
         self.assertEqual(os.path.exists("file.json"), True)
+        self.assertIn(f"City.{a1.id}", models.storage.all().keys())
+        self.assertEqual(models.storage.all()[f"City.{a1.id}"], a1)
 
     def test_reload(self):
+        """Test for the reload method"""
         a1 = City()
         models.storage.save()
         self.assertEqual(os.path.exists("file.json"), True)
         os.remove("file.json")
         self.assertEqual(os.path.exists("file.json"), False)
-
-        f1 = FileStorage()
-        f1.reload()
-        all_objs = f1.all()
-        all_objs.clear()
+        self.assertEqual(models.storage.reload(), None)
+        models.storage._FileStorage__objects.clear()
+        self.assertEqual(len(models.storage._FileStorage__objects), 0)
         models.storage.new(a1)
-        self.assertEqual(all_objs, {f"City.{a1.id}": a1})
+        self.assertEqual(len(models.storage._FileStorage__objects), 1)
+        self.assertEqual(models.storage.all(), {f"City.{a1.id}": a1})
+        self.assertEqual(os.path.exists("file.json"), False)
+        a1.save()
+        self.assertEqual(os.path.exists("file.json"), True)
+        models.storage._FileStorage__objects.clear()
+        self.assertEqual(len(models.storage._FileStorage__objects), 0)
+        models.storage.reload()
+        self.assertEqual(len(models.storage._FileStorage__objects), 1)
+        models.storage.save()
 
     def test_pycodestyle_conformance(self):
         """Test for PEP8
