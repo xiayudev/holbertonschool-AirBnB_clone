@@ -10,7 +10,6 @@ import pycodestyle
 import models
 import unittest
 from models.engine.file_storage import FileStorage
-from models.base_model import BaseModel
 from models.user import User
 from models.city import City
 
@@ -42,6 +41,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(os.path.exists("file.json"), True)
         self.assertIn(f"City.{a1.id}", models.storage.all().keys())
         self.assertEqual(models.storage.all()[f"City.{a1.id}"], a1)
+        self.assertRaises(Exception, models.storage.save, None)
 
     def test_reload(self):
         """Test for the reload method"""
