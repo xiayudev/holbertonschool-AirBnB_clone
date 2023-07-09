@@ -36,7 +36,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_save(self):
         """Test for the save method"""
-        self.assertEqual(TypeError, models.storage.save, None)
+        self.assertRaises(TypeError, models.storage.save, None)
 
     def test_reload(self):
         """Test for the reload method"""
