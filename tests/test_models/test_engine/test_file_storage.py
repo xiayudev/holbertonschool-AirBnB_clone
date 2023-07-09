@@ -4,6 +4,7 @@ the File Storage
 class
 """
 
+import console
 import models
 import unittest
 from models.engine.file_storage import FileStorage
@@ -22,8 +23,8 @@ class TestFileStorage(unittest.TestCase):
     def setUp(self):
         """
         """
-        l_tests =['test_new', 'test_save', 'test_reload']
-        if self._testMethodName in l_tests:
+        self.l_tests = ['test_new', 'test_save', 'test_reload']
+        if self._testMethodName in self.l_tests:
             self.b = BaseModel()
             self.u = User()
             self.s = State()
@@ -35,7 +36,16 @@ class TestFileStorage(unittest.TestCase):
     def tearDown(self):
         """
         """
-        pass
+        all_objs = models.storage.all()
+        if self._testMethodName in self.l_tests:
+            all_objs.pop('BaseModel.' + self.b.id)
+            all_objs.pop('User.' + self.u.id)
+            all_objs.pop('State.' + self.s.id)
+            all_objs.pop('Place.' + self.p.id)
+            all_objs.pop('City.' + self.c.id)
+            all_objs.pop('Amenity.' + self.a.id)
+            all_objs.pop('Review.' + self.r.id)
+            models.storage.save()
 
     def test_basic(self):
         # self.assertNotEqual(FileStorage._FileStorage__file_path, None)
