@@ -53,6 +53,16 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(FileStorage._FileStorage__objects), dict)
         self.assertEqual(type(models.storage), FileStorage)
 
+    def test_filestorage_doc(self):
+        """Check the docstrings
+        """
+        self.assertIsNotNone(FileStorage.__doc__)
+        self.assertIsNotNone(FileStorage.__init__.__doc__)
+        self.assertIsNotNone(FileStorage.new.__doc__)
+        self.assertIsNotNone(FileStorage.all.__doc__)
+        self.assertIsNotNone(FileStorage.reload.__doc__)
+        self.assertIsNotNone(FileStorage.save.__doc__)
+
     def test_all(self):
         """Test for the all method"""
         self.assertEqual(type(models.storage.all()), dict)
