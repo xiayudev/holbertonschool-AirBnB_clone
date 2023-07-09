@@ -34,13 +34,42 @@ This Python's module is a testing framework that allows us to write test cases. 
 ### *args and **kwargs
 + Examples (add images here)
 ### packages
-+ Examples
-
+In Python, a package is a special folder or directory that contains related modules and the __init__.py file that indicates that the folder is a package, and initializes and defines the behavior of the package.
+```
+my_package/
+	__init__.py
+	module_1.py
+	module_2.py
+```
 ### serialization - deserialization
-+ Examples
+Serialization: Serialization is the process of converting an object or data structure into a stream of bytes for storage or transmission.
+
+Deserialization: Deserialization is the reverse process of serialization.
+```
+import json
+
+# Data
+data = {'nombre': 'Juan','edad': 30}
+
+# Serialization to JSON
+data_serial = json.dumps(data)
+
+# Deserialization from JSON
+data_deserial = json.loads(data_serial)
+
+```
 
 ### cmd
-+ Examples
+In Python, cmd is a module that allows you to create an interactive command line interface.
+```
+import cmd
+
+class Console(cmd.Cmd):
+	"""code"""
+
+# Function that starts an interactive console command loop
+Console().cmdloop()
+```
 ### circular import
 + Examples
 ### modules
