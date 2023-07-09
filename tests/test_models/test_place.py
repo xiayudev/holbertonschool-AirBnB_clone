@@ -44,7 +44,3 @@ class TestPlace(unittest.TestCase):
         result = style.check_files(['models/place.py',
                                     'tests/test_models/test_place.py'])
         self.assertEqual(result.total_errors, 0, "Found errors")
-
-
-if __name__ == '__main__':
-    unittest.main()

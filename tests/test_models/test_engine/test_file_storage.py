@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """Unittest for
 the File Storage
 class
@@ -62,7 +61,3 @@ class TestFileStorage(unittest.TestCase):
         models.storage.reload()
         self.assertEqual(len(models.storage._FileStorage__objects), 1)
         models.storage.save()
-
-
-if __name__ == '__main__':
-    unittest.main()

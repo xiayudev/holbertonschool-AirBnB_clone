@@ -37,7 +37,3 @@ class TestUser(unittest.TestCase):
         result = style.check_files(['models/base_model.py',
                                     'tests/test_models/test_base_model.py'])
         self.assertEqual(result.total_errors, 0, "Found errors")
-
-
-if __name__ == '__main__':
-    unittest.main()

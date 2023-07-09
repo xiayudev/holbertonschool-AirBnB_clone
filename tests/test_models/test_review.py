@@ -36,7 +36,3 @@ class TestReview(unittest.TestCase):
         result = style.check_files(['models/review.py',
                                     'tests/test_models/test_review.py'])
         self.assertEqual(result.total_errors, 0, "Found errors")
-
-
-if __name__ == '__main__':
-    unittest.main()

@@ -34,7 +34,3 @@ class TestAmenity(unittest.TestCase):
         result = style.check_files(['models/amenity.py',
                                     'tests/test_models/test_amenity.py'])
         self.assertEqual(result.total_errors, 0, "Found errors")
-
-
-if __name__ == '__main__':
-    unittest.main()
