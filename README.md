@@ -29,11 +29,20 @@ This is the first part of a big project to create a clone of AirBnB. This part o
 These concepts are very important. You need to understand them or at least have a general understanding about how they work and how they are applied.
 ### unittest
 This Python's module is a testing framework that allows us to write test cases. It provides a set of classes, methods and assertions to verify if our code works as expected. To work with this module we need to import it `import unittest`
-+ Examples of using unittest module
+
+```python
+import unittest
+
+class TestExample(unittest.TestCase):
+  """Some useful comment"""
+
+  def test_example(self):
+    """Some useful comment"""
+```
 
 ### *args and **kwargs
 *args is used to pass a variable number of positional arguments to a function. The passed arguments are collected in a tuple inside the function.
-```
+```python
 def function(*args):
     for arg in args:
         print(arg)
@@ -42,7 +51,7 @@ function(1, 2, 3, 4)
 ```
 
 **kwargs is used to pass a variable number of keyword arguments to a function. The passed arguments are collected in a dictionary inside the function.
-```
+```python
 def function(**kwargs):
     for key, value in kwargs.items():
         print(key, value)
@@ -51,7 +60,7 @@ function(name="John", age=30)
 ```
 ### packages
 In Python, a package is a special folder or directory that contains related modules and the __init__.py file that indicates that the folder is a package, and initializes and defines the behavior of the package.
-```
+```bash
 my_package/
 	__init__.py
 	module_1.py
@@ -61,7 +70,7 @@ my_package/
 Serialization: Serialization is the process of converting an object or data structure into a stream of bytes for storage or transmission.
 
 Deserialization: Deserialization is the reverse process of serialization.
-```
+```python
 import json
 
 # Data
@@ -77,7 +86,7 @@ data_deserial = json.loads(data_serial)
 
 ### cmd
 In Python, cmd is a module that allows you to create an interactive command line interface.
-```
+```python
 import cmd
 
 class Console(cmd.Cmd):
@@ -88,7 +97,7 @@ Console().cmdloop()
 ```
 ### circular import
 Circular import occurs when two or more modules import each other, creating a circular dependency. This will raise an exception called `ImportError`.
-```
+```python
 # module_a.py
 
 from module_b import b
@@ -104,13 +113,13 @@ b = 'b'
 ```
 ### modules
 In Python, a module is a file that contains reusable Python code (classes, functions, variables).
-```
-/* Import math module*/
+```python
+""" Import math module"""
 
 import math
 result = math.sqrt(25)
 
-/*or*/
+# or
 
 from math import sqrt
 resultado = sqrt(25)
@@ -147,7 +156,18 @@ $ cat test_file | ./console.py
 ```
 
 ## Examples
-
+Some examples using the console for creating, destroying data
++ Interactive mode
+![](https://res.cloudinary.com/djvwjnzxw/image/upload/v1688928270/WhatsApp_Image_2023-07-09_at_13.39.24_ihykm0.jpg)
++ Non-interactive mode
+```bash
+$ cat test_file
+$ create BaseModel
+$ cat test_file | ./console.py
+(hbnb) e630f3eb-756b-4a2b-9aa4-6b031a44fffe
+(hbnb) Exiting ...
+$
+```
 ## Files and Directories
 | File | Description |
 | ------------ | ------------ |
@@ -158,7 +178,7 @@ $ cat test_file | ./console.py
 
 | Directory | Description |
 | ------------ | ------------ |
-| `tests/` | Test all the files to be tested |
+| `tests/` | All the files to be tested |
 | `models/` | Important classes of the project |
 ## Authors
 
