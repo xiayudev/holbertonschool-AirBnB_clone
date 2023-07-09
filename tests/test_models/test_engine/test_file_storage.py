@@ -43,12 +43,41 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn("Amenity." + a.id, models.storage.all().keys())
         self.assertIn("Review." + r.id, models.storage.all().keys())
 
-    def test_save(self):
+    def test_save_argument(self):
         self.assertRaises(TypeError, models.storage.save, None)
 
-    def test_reload(self):
+    def test_save(self):
+        b = BaseModel()
+        u = User()
+        s = State()
+        p = Place()
+        c = City()
+        a = Amenity()
+        r = Review()
+
+        models.storage.new(b)
+        models.storage.new(u)
+        models.storage.new(s)
+        models.storage.new(p)
+        models.storage.new(c)
+        models.storage.new(a)
+        models.storage.new(r)
+        models.storage.save()
+
+        with open("file.json", "r") as f:
+            j_text = f.read()
+            self.assertIn("BaseModel." + b.id, j_text)
+            self.assertIn("User." + u.id, j_text)
+            self.assertIn("State." + s.id, j_text)
+            self.assertIn("Place." + p.id, j_text)
+            self.assertIn("City." + c.id, j_text)
+            self.assertIn("Amenity." + a.id, j_text)
+            self.assertIn("Review." + r.id, j_text)
+
+    def test_reload_argument(self):
         self.assertRaises(TypeError, models.storage.reload, None)
 
+    def test_reload(self):
         b = BaseModel()
         u = User()
         s = State()
@@ -67,12 +96,12 @@ class TestFileStorage(unittest.TestCase):
         models.storage.save()
         models.storage.reload()
 
-        OBJ = FileStorage._FileStorage__objects
+        objc = FileStorage._FileStorage__objects
 
-        self.assertIn("BaseModel." + b.id, OBJ)
-        self.assertIn("User." + u.id, OBJ)
-        self.assertIn("State." + s.id, OBJ)
-        self.assertIn("Place." + p.id, OBJ)
-        self.assertIn("City." + c.id, OBJ)
-        self.assertIn("Amenity." + a.id, OBJ)
-        self.assertIn("Review." + r.id, OBJ)
+        self.assertIn("BaseModel." + b.id, objc)
+        self.assertIn("User." + u.id, objc)
+        self.assertIn("State." + s.id, objc)
+        self.assertIn("Place." + p.id, objc)
+        self.assertIn("City." + c.id, objc)
+        self.assertIn("Amenity." + a.id, objc)
+        self.assertIn("Review." + r.id, objc)
