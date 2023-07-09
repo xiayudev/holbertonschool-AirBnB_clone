@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Unittest for the File Storage class
 """
 
@@ -105,3 +106,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn("City." + c.id, objc)
         self.assertIn("Amenity." + a.id, objc)
         self.assertIn("Review." + r.id, objc)
+
+
+if __name__ == "__main__":
+    unittest.main()
