@@ -9,6 +9,7 @@ import datetime
 import pycodestyle
 from unittest import mock
 from models.base_model import BaseModel
+import datetime
 from models.engine.file_storage import FileStorage
 
 
@@ -55,6 +56,9 @@ class TestBaseModel(unittest.TestCase):
         b1.save()
         self.assertNotEqual(b1_update, b1.updated_at)
         self.assertEqual(True, os.path.exists('file.json'))
+        now = datetime.datetime.now()
+        self.assertAlmostEqual(
+            b1.updated_at, now, delta=datetime.timedelta(seconds=1))
 
     def test_to_dict(self):
         """Test for the to_dict method"""
