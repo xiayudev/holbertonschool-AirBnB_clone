@@ -40,7 +40,7 @@ h4 {
     font-size: 14px;
     margin-top: 0;
     margin-left: 70px;
-    margin-bottom: 0;
+    margin-bottom: 13px;
 
 }
 
@@ -53,42 +53,44 @@ h4 {
     border-right: 1px solid #DDDDDD;
 }
 
-.popover {
+.wrapper-location, .amenities .popover {
     display: none;
     background-color: #FAFAFA;
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     list-style: none;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 30px;
 }
 
-.popover ul {
-    list-style: none;
+.wrapper-location .state {
+    margin-bottom: 8px;
+    margin-left: 20px;
 }
 
-.popover .state:first-child {
+.wrapper-location .state:first-child {
     margin-top: 0;
 }
 
-.popover .state {
-    font-size: 16px;
+.wrapper-location ul {
+    margin-top: 0;
 }
 
-.location:hover, .amenities:hover {
-    cursor: pointer;
+.popover {
+    list-style: none;
 }
 
-.location:hover .popover, .amenities:hover .popover {
-    display: block;
-    cursor: pointer;
-}
-
-.amenities .popover li {
+.popover li {
     margin-bottom: 8px;
 }
 
-.location .popover .state, .location .popover li {
-    margin-bottom: 4px;
+.amenities:hover, .location:hover {
+    cursor: pointer;
+}
+
+.amenities:hover .popover, .location:hover .wrapper-location {
+    display: block;
+    cursor: pointer;
 }
