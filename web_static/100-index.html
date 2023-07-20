@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="AirBnB clone - web static part">
+        <link rel="icon" href="images/icon.png" type="image/png">
+        <title>AirBnB clone</title>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="styles/4-common.css">
+        <link rel="stylesheet" href="styles/6-filters.css">
+        <link rel="stylesheet" href="styles/3-header.css">
+        <link rel="stylesheet" href="styles/3-footer.css">
+        <link rel="stylesheet" href="styles/100-places.css">
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header>
+            <div class="logo"></div>
+        </header>
+
+        <!-- Container -->
+        <div class="container">
+
+            <!-- Filter section -->
+            <section class="filters">
+                <div class="location">
+                    <h3>States</h3>
+                    <h4>California, Arizona</h4>
+                    <div class="wrapper-location">
+                        <div>
+                            <h2 class="state">Arizona:</h2>
+                            <ul class="popover">
+                                <li>Page</li>
+                                <li>Page2</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2 class="state">California:</h2>
+                            <ul class="popover">
+                                <li>San Francisco</li>
+                                <li>Los Altos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="amenities">
+                    <h3>Amenities</h3>
+                    <h4>Internet, kitchen</h4>
+                    <ul class="popover">
+                        <li>Internet</li>
+                        <li>Tv</li>
+                        <li>Kitchen</li>
+                        <li>Iron</li>
+                    </ul>
+                </div>
+                <button>Search</button>
+            </section>
+
+            <!-- Places section -->
+            <section class="places">
+                <h1 class="title-places">Places</h1>
+                <div class="wrapper-places">
+                    <article>
+                        <h2>My home</h2>
+                        <div class="price_by_night">$80</div>
+                        <div class="information">
+                            <div class="max_guest">
+                                <div class="icon-guest"></div>
+                                <span>2 Guests</span>
+                            </div>
+                            <div class="number_rooms">
+                                <div class="icon-room"></div>
+                                <span>1 Bedroom</span>
+                            </div>
+                            <div class="number_bathrooms">
+                                <div class="icon-bathroom"></div>
+                                <span>1 Bathroom</span>
+                            </div>
+                        </div>
+                        <div class="user">
+                            <p><strong>Owner:</strong> John Lennon</p>
+                        </div>
+                        <div class="description">
+                            <p>
+                                This is a lovely 1 bedroom and 1 bathroom apartment that can accomodate 2 people. It locates at the center of Shanghai and next to subway line 1, 1 stop to People Square, 2 stops to bund, 3 stops to Jingan Temple.
+                            </p>
+                        </div>
+                        <div class="amenities">
+                            <h2 class="title-amenities">Amenities</h2>
+                            <ul>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-tv" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+                                        <path d="M16 3l-4 4l-4 -4" />
+                                      </svg>
+                                    <span>TV</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wifi" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M12 18l.01 0" />
+                                        <path d="M9.172 15.172a4 4 0 0 1 5.656 0" />
+                                        <path d="M6.343 12.343a8 8 0 0 1 11.314 0" />
+                                        <path d="M3.515 9.515c4.686 -4.687 12.284 -4.687 17 0" />
+                                      </svg>
+                                    <span>Wifi</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-paw" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538z" />
+                                        <path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052z" />
+                                        <path d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267z" />
+                                        <path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267z" />
+                                        <path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082z" />
+                                      </svg>
+                                    <span>Pets friendly</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="reviews">
+                            <h2 class="title-reviews">2 Reviews</h2>
+                            <ul>
+                                <li>
+                                    <h3>From Bob Dylan the 27th January 2023</h3>
+                                    <p>Runshi is an epic host. Nothing more I can say. 5 star!</p>
+                                </li>
+                                <li>
+                                    <h3>From Connor the 4th January 2023</h3>
+                                    <p>Highly recommended!</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article>
+                        <h2>Tiny house</h2>
+                        <div class="price_by_night">$65</div>
+                        <div class="information">
+                            <div class="max_guest">
+                                <div class="icon-guest"></div>
+                                <span>4 Guests</span>
+                            </div>
+                            <div class="number_rooms">
+                                <div class="icon-room"></div>
+                                <span>2 Bedroom</span>
+                            </div>
+                            <div class="number_bathrooms">
+                                <div class="icon-bathroom"></div>
+                                <span>1 Bathroom</span>
+                            </div>
+                        </div>
+                        <div class="user">
+                            <p><strong>Owner:</strong> Adrienne</p>
+                        </div>
+                        <div class="description">
+                            <p>
+                                Our place is a private, affordable stand-alone guest house centrally located just minutes to French Quarters, downtown, the Fair Grounds (Jazz Fest) and City Park. The guest house is a quaint, 400 square ft. with a full bath, mini kitchen, & livinf room. The extra high ceilings make the home feel more spacious. The sofa converts to a bed also. We have a hand made counter area that adds character to the room and a great porch/deck  to relax on and have a glass of Meriot.
+                            </p>
+                        </div>
+                        <div class="amenities">
+                            <h2 class="title-amenities">Amenities</h2>
+                            <ul>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-paw" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538z" />
+                                        <path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052z" />
+                                        <path d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267z" />
+                                        <path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267z" />
+                                        <path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082z" />
+                                      </svg>
+                                    <span>Pets friendly</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="reviews">
+                            <h2 class="title-reviews">1 Review</h2>
+                            <ul>
+                                <li>
+                                    <h3>From Max the 15th January 2023</h3>
+                                    <p>Fantastic place. It was clean, Adrienne was great (even though we did not meet in person) and everything went super smooth. Location is also great if you like running and something a bit more quiet. I would suggest a car o take into consideration that you might have to Uber into the city from the location. Overall, would recommend the place anytime</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article>
+                        <h2>A suite</h2>
+                        <div class="price_by_night">$190</div>
+                        <div class="information">
+                            <div class="max_guest">
+                                <div class="icon-guest"></div>
+                                <span>6 Guests</span>
+                            </div>
+                            <div class="number_rooms">
+                                <div class="icon-room"></div>
+                                <span>3 Bedroom</span>
+                            </div>
+                            <div class="number_bathrooms">
+                                <div class="icon-bathroom"></div>
+                                <span>2 Bathroom</span>
+                            </div>
+                        </div>
+                        <div class="user">
+                            <p><strong>Owner:</strong> John Doe</p>
+                        </div>
+                        <div class="description">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro debitis ipsum perferendis at doloremque, atque odio nam veniam, delectus sapiente amet dolorem eaque commodi? Ex doloremque expedita id sint ad.
+                            </p>
+                        </div>
+                        <div class="amenities">
+                            <h2 class="title-amenities">Amenities</h2>
+                            <ul>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-tv" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+                                        <path d="M16 3l-4 4l-4 -4" />
+                                      </svg>
+                                    <span>TV</span>
+                                </li>
+                                <li>
+                                    <!-- <div class="icon-wifi icons"></div> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wifi" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M12 18l.01 0" />
+                                        <path d="M9.172 15.172a4 4 0 0 1 5.656 0" />
+                                        <path d="M6.343 12.343a8 8 0 0 1 11.314 0" />
+                                        <path d="M3.515 9.515c4.686 -4.687 12.284 -4.687 17 0" />
+                                      </svg>
+                                    <span>Wifi</span>
+                                </li>
+                                <li>
+                                    <!-- <div class="icon-pet icons"></div> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-paw" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538z" />
+                                        <path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052z" />
+                                        <path d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267z" />
+                                        <path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267z" />
+                                        <path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082z" />
+                                      </svg>
+                                    <span>Pets friendly</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M9 2m0 3a3 3 0 0 1 3 -3h0a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3h0a3 3 0 0 1 -3 -3z" />
+                                        <path d="M5 10a7 7 0 0 0 14 0" />
+                                        <path d="M8 21l8 0" />
+                                        <path d="M12 17l0 4" />
+                                      </svg>
+                                    <span>Karaoke</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-gamepad-2" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M12 5h3.5a5 5 0 0 1 0 10h-5.5l-4.015 4.227a2.3 2.3 0 0 1 -3.923 -2.035l1.634 -8.173a5 5 0 0 1 4.904 -4.019h3.4z" />
+                                        <path d="M14 15l4.07 4.284a2.3 2.3 0 0 0 3.925 -2.023l-1.6 -8.232" />
+                                        <path d="M8 9v2" />
+                                        <path d="M7 10h2" />
+                                        <path d="M14 10h2" />
+                                      </svg>
+                                    <span>Game area</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pool" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M2 20a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1" />
+                                        <path d="M2 16a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1" />
+                                        <path d="M15 12v-7.5a1.5 1.5 0 0 1 3 0" />
+                                        <path d="M9 12v-7.5a1.5 1.5 0 0 0 -3 0" />
+                                        <path d="M15 5l-6 0" />
+                                        <path d="M9 10l6 0" />
+                                      </svg>
+                                    <span>Pool area</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="reviews">
+                            <h2 class="title-reviews">3 Reviews</h2>
+                            <ul>
+                                <li>
+                                    <h3>From John Connor the 27th January 2023</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse est ut dicta facilis at, unde obcaecati illo numquam et quod veniam fuga voluptas architecto labore quo. Qui sed officia aut.</p>
+                                </li>
+                                <li>
+                                    <h3>From Bryan O'conner the 4th February 2023</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus iure veniam obcaecati est totam soluta at harum perspiciatis, debitis, veritatis possimus eius doloremque dignissimos. Dolorem incidunt molestiae suscipit cupiditate possimus.</p>
+                                </li>
+                                <li>
+                                    <h3>From Dominic Toretto the 24th February 2023</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus iure veniam obcaecati est totam soluta at harum perspiciatis, debitis, veritatis possimus.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>Holberton School</footer>
+    </body>
+</html>
